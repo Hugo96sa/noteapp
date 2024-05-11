@@ -37,6 +37,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import hugsmaker.com.noteapp.ui.theme.pastelColors
 
+/**
+ * Composable function for the detail screen of a note.
+ * @param modifier The modifier for the UI element.
+ * @param noteId The ID of the note.
+ * @param assistedFactory The assisted factory for creating the ViewModel.
+ * @param navigateUp Callback for navigating back.
+ */
 @Composable
 fun DetailScreen(
     modifier: Modifier = Modifier,
@@ -71,6 +78,20 @@ fun DetailScreen(
     )
 }
 
+/**
+ * Composable function for the detail screen UI elements.
+ * @param modifier The modifier for the UI element.
+ * @param isUpdatingNote Flag indicating if the note is being updated.
+ * @param title The title of the note.
+ * @param content The content of the note.
+ * @param isBookMark Flag indicating if the note is bookmarked.
+ * @param onBookMarkChange Callback for changing the bookmark status.
+ * @param isFormNotBlank Flag indicating if the form fields are not blank.
+ * @param onTitleChange Callback for changing the title.
+ * @param onContentChange Callback for changing the content.
+ * @param onBtnClick Callback for button click action.
+ * @param onNavigate Callback for navigation action.
+ */
 @Composable
 private fun DetailScreen(
     modifier: Modifier,
@@ -138,6 +159,15 @@ private fun DetailScreen(
     }
 }
 
+/**
+ * Composable function for the top section of the detail screen.
+ * @param modifier The modifier for the UI element.
+ * @param title The title of the note.
+ * @param isBookMark Flag indicating if the note is bookmarked.
+ * @param onBookmarkChange Callback for changing the bookmark status.
+ * @param onTitleChange Callback for changing the title.
+ * @param onNavigate Callback for navigation action.
+ */
 @Composable
 fun TopSection(
     modifier: Modifier = Modifier,
@@ -205,6 +235,12 @@ private fun NotesTextField(
     )
 }
 
+/**
+ * Composable function for the color picker dialog.
+ * @param selectedColor The currently selected color.
+ * @param onColorSelected Callback for when a color is selected.
+ * @param onDismiss Callback for dismissing the dialog.
+ */
 @Composable
 fun ColorPickerDialog(
     selectedColor: Color,
@@ -261,6 +297,9 @@ fun ColorCircle(
     }
 }
 
+/**
+ * Composable function for previewing the color picker dialog.
+ */
 @Composable
 fun PreviewColorPickerDialog() {
     ColorPickerDialog(

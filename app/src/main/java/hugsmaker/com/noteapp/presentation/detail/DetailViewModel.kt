@@ -16,6 +16,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.Date
 
+/**
+ * ViewModel for the detail screen of a note.
+ * @param addUseCase The use case for adding or updating a note.
+ * @param getNoteByIdUseCase The use case for getting a note by ID.
+ * @param noteId The ID of the note.
+ */
 class DetailViewModel @AssistedInject constructor(
     private val addUseCase: AddUseCase,
     private val getNoteByIdUseCase: GetNoteByIdUseCase,
@@ -79,6 +85,9 @@ class DetailViewModel @AssistedInject constructor(
     }
 }
 
+/**
+ * Data class representing the state of the detail screen.
+ */
 data class DetailState(
     val id: Long = 0,
     val title: String = "",
@@ -88,7 +97,11 @@ data class DetailState(
     val isUpdatingNote: Boolean = false,
 )
 
-
+/**
+ * Factory for creating DetailedViewModel instances.
+ * @param noteId The ID of the note.
+ * @param assistedFactory The assisted factory for creating the ViewModel.
+ */
 @Suppress("UNCHECKED_CAST")
 class DetailedViewModelFactory(
     private val noteId: Long,
@@ -99,7 +112,15 @@ class DetailedViewModelFactory(
     }
 }
 
+/**
+ * Assisted factory interface for creating DetailViewModel instances.
+ */
 @AssistedFactory
 interface DetailAssistedFactory {
+    /**
+     * Creates a DetailViewModel instance with the given note ID.
+     * @param noteId The ID of the note.
+     * @return DetailViewModel instance.
+     */
     fun create(noteId: Long): DetailViewModel
 }

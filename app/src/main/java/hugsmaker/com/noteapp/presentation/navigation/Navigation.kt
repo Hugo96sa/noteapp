@@ -17,10 +17,22 @@ import hugsmaker.com.noteapp.presentation.detail.DetailScreen
 import hugsmaker.com.noteapp.presentation.home.HomeScreen
 import hugsmaker.com.noteapp.presentation.home.HomeViewModel
 
+/**
+ * Enum defining the screens in the note navigation flow: Home, Detail, and Bookmark.
+ */
 enum class Screens {
     Home, Detail, Bookmark
 }
 
+/**
+ * Composable function for handling navigation between different screens in the note app.
+ *
+ * @param modifier The modifier for the composable.
+ * @param navHostController The NavHostController responsible for navigation.
+ * @param homeViewModel The ViewModel for the home screen.
+ * @param bookmarkViewModel The ViewModel for the bookmark screen.
+ * @param assistedFactory The assisted factory for creating the DetailViewModel.
+ */
 @Composable
 fun NoteNavigation(
     modifier: Modifier = Modifier,
@@ -79,6 +91,11 @@ fun NoteNavigation(
     }
 }
 
+/**
+ * Extension function for NavHostController to navigate to a destination as a single top destination.
+ *
+ * @param route The destination route to navigate to.
+ */
 fun NavHostController.navigateToSingleTop(route: String) {
     navigate(route) {
         popUpTo(graph.findStartDestination().id) { saveState = true }

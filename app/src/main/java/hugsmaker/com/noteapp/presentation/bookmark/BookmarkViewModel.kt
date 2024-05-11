@@ -17,6 +17,12 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel class for managing bookmarked notes.
+ * @param updateNoteUseCase Use case for updating a note.
+ * @param filteredBookmarkNotes Use case for retrieving filtered bookmarked notes.
+ * @param deleteNoteUseCase Use case for deleting a note.
+ */
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
     private val updateNoteUseCase: UpdateNoteUseCase,
@@ -30,7 +36,9 @@ class BookmarkViewModel @Inject constructor(
         getBookMarkedNotes()
     }
 
-
+    /**
+     * Retrieves bookmarked notes and updates the state accordingly.
+     */
     private fun getBookMarkedNotes() {
         filteredBookmarkNotes().onEach {
             _state.value = BookmarkState(
@@ -43,6 +51,10 @@ class BookmarkViewModel @Inject constructor(
             .launchIn(viewModelScope)
     }
 
+    /**
+     * Handles bookmark status changes for a note.
+     * @param note The note to update bookmark status for.
+     */
     fun onBookmarkChange(note: Note) {
         viewModelScope.launch {
             updateNoteUseCase(
@@ -53,15 +65,21 @@ class BookmarkViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Deletes a note.
+     * @param noteId The ID of the note to delete.
+     */
     fun deleteNote(noteId: Long) {
         viewModelScope.launch {
             deleteNoteUseCase(noteId)
         }
     }
-
-
 }
 
+/**
+ * Represents the state of bookmarked notes.
+ * @param notes The state of notes, including loading, success, or error.
+ */
 data class BookmarkState(
     val notes: ScreenViewState<List<Note>> = ScreenViewState.Loading,
 )

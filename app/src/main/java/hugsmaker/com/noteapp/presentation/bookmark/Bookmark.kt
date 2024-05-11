@@ -15,6 +15,14 @@ import hugsmaker.com.noteapp.data.local.model.Note
 import hugsmaker.com.noteapp.presentation.home.NoteCard
 import hugsmaker.com.noteapp.presentation.home.notes
 
+/**
+ * Composable function for displaying bookmarked notes.
+ * @param state The state of bookmarked notes to be displayed.
+ * @param modifier The modifier for styling and layout customization.
+ * @param onBookMarkChange Callback function for handling bookmark status changes.
+ * @param onDelete Callback function for deleting a note.
+ * @param onNoteClicked Callback function for handling note clicks.
+ */
 @Composable
 fun BookmarkScreen(
     state: BookmarkState,
@@ -53,9 +61,12 @@ fun BookmarkScreen(
             )
         }
     }
-
 }
 
+/**
+ * Preview function for the BookmarkScreen composable.
+ * Used for testing and design preview purposes.
+ */
 @Preview(showSystemUi = true)
 @Composable
 fun PrevBookMark() {

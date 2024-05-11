@@ -42,6 +42,15 @@ import hugsmaker.com.noteapp.common.ScreenViewState
 import hugsmaker.com.noteapp.data.local.model.Note
 import java.util.Date
 
+/**
+ * Composable function for displaying the home screen with a list of notes.
+ *
+ * @param modifier The modifier for the composable.
+ * @param state The state representing the home screen UI state.
+ * @param onBookmarkChange Callback for handling bookmark changes.
+ * @param onDeleteNote Callback for deleting a note.
+ * @param onNoteClicked Callback for handling note click events.
+ */
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
@@ -75,6 +84,15 @@ fun HomeScreen(
     }
 }
 
+/**
+ * Composable function for displaying the detailed view of notes in a staggered grid layout.
+ *
+ * @param notes The list of notes to display.
+ * @param modifier The modifier for the composable.
+ * @param onBookmarkChange Callback for handling bookmark changes.
+ * @param onDeleteNote Callback for deleting a note.
+ * @param onNoteClicked Callback for handling note click events.
+ */
 @Composable
 private fun HomeDetail(
     notes: List<Note>,
@@ -100,6 +118,15 @@ private fun HomeDetail(
     }
 }
 
+/**
+ * Composable function for displaying a note card with options like delete and bookmark.
+ *
+ * @param index The index of the note card.
+ * @param note The note to display in the card.
+ * @param onBookmarkChange Callback for handling bookmark changes.
+ * @param onDeleteNote Callback for deleting a note.
+ * @param onNoteClicked Callback for handling note click events.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteCard(
@@ -187,6 +214,12 @@ fun NoteCard(
     }
 }
 
+/**
+ * Composable function for displaying a delete note dialog.
+ *
+ * @param onDeleteConfirmed Callback for confirming note deletion.
+ * @param onDismiss Callback for dismissing the dialog.
+ */
 @Composable
 fun DeleteNoteDialog(
     onDeleteConfirmed: () -> Unit,
@@ -228,6 +261,9 @@ fun DeleteNoteDialog(
     )
 }
 
+/**
+ * Preview function for the HomeScreen composable.
+ */
 @Preview(showSystemUi = true)
 @Composable
 fun PrevHome() {
@@ -240,7 +276,6 @@ fun PrevHome() {
         onNoteClicked = {}
     )
 }
-
 
 val placeHolderText =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porttitor nunc vel metus mollis suscipit. Phasellus nec eros id ex aliquam scelerisque. Phasellus quis feugiat eros. Nam sodales ante ac lorem convallis tempus. Sed lacinia consequat diam at ultrices. Nullam lacinia dignissim aliquam. Proin sit amet quam efficitur, euismod nunc eu, aliquam orci. Ut mattis orci a purus ultricies sodales. Pellentesque odio quam, aliquet nec accumsan et, pharetra et lacus. Pellentesque faucibus, dolor quis iaculis fringilla, ligula nisl imperdiet massa, vel volutpat velit elit ac magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus pharetra dolor nec magna condimentum volutpat. "

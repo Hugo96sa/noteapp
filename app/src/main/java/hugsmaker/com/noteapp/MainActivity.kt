@@ -28,7 +28,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
@@ -42,10 +41,17 @@ import hugsmaker.com.noteapp.presentation.navigation.navigateToSingleTop
 import hugsmaker.com.noteapp.ui.theme.NoteApplicationTheme
 import javax.inject.Inject
 
+/**
+ * Entry point activity for the Note Application.
+ */
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @Inject
     lateinit var assistedFactory: DetailAssistedFactory
+
+    /**
+     * Initializes the activity and sets the content view.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -62,6 +68,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    /**
+     * Composable function representing the Note Application.
+     */
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun NoteApp() {
@@ -74,8 +83,10 @@ class MainActivity : ComponentActivity() {
                 BottomAppBar(
                     actions = {
                         Row(
-                            horizontalArrangement = Arrangement.Center
+                            horizontalArrangement = Arrangement.Center,
+                            
                         ) {
+                            Spacer(modifier = Modifier.size(12.dp))
                             InputChip(
                                 selected = currentTab == TabScreen.Home,
                                 onClick = {
@@ -128,22 +139,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Enum class representing the different tabs/screens in the application.
+ */
 enum class TabScreen {
     Home, BookMark
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NoteApplicationTheme {
-        Greeting("Android")
-    }
 }
